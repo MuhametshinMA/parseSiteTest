@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="10dp">
+
+    <TextView
+        android:id="@+id/tvCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="currency"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFirstBank"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:hint="FirstBank"
+        android:padding="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvCurrency"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFirstVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="FirstVal"
+        android:padding="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvCurrency"
+        app:layout_constraintTop_toBottomOf="@+id/tvFirstBank" />
+
+    <TextView
+        android:id="@+id/tvSecBank"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:hint="SecBank"
+        android:padding="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvFirstBank"
+        app:layout_constraintTop_toTopOf="@+id/tvFirstBank" />
+
+    <TextView
+        android:id="@+id/tvSecVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="SecVal"
+        android:padding="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvFirstBank"
+        app:layout_constraintTop_toBottomOf="@+id/tvSecBank" />
+</androidx.constraintlayout.widget.ConstraintLayout>

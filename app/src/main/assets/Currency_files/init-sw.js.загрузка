@@ -1,0 +1,40 @@
+if ("serviceWorker" in navigator) {
+	navigator.serviceWorker
+		.register("/sw.js", {
+			scope: "/"
+		})
+		.then(function (reg) {
+			console.log("Service worker has been registered for scope: " + reg.scope);
+		});
+}
+
+window.addEventListener('beforeinstallprompt', function (event) {
+	// Запретить Chrome 67 и более ранние версии автоматически отображать приглашение
+	// event.preventDefault();
+
+	// Показать модальное диалоговое окно добавления на главный экран (пока без него)
+	// event.prompt();
+
+	//Подождите, пока пользователь ответит на приглашение
+	event.userChoice.then(function (choice) {
+		ga('send', 'event', 'pwa_popup_test', choice.outcome);
+
+		ga('send', 'event', 'pwa_popup', 'pwa_show');
+		ym(31650469, 'reachGoal', 'pwa_show');
+
+		if (choice.outcome === 'accepted') {
+			//Пользователь принял приглашение A2HS
+			ym(31650469, 'reachGoal', 'pwa_install');
+			ga('send', 'event', 'pwa_popup', 'pwa_install');
+		} else {
+			//Пользователь отклонил приглашение A2HS
+			ym(31650469, 'reachGoal', 'pwa_dismiss');
+			ga('send', 'event', 'pwa_popup', 'pwa_dismiss');
+		}
+	});
+});
+
+// событие определяет было ли приложение успешно добавленно на домашний экран пользователя после того, как он принял приглашение.
+window.addEventListener('appinstalled', function (evt) {
+	ga('send', 'event', 'pwa_popup', 'successfullyinstalled_pwa');
+});
